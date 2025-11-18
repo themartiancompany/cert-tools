@@ -7,14 +7,20 @@ const
     _path.resolve(
       __dirname);
 const
-  _file_name =
-    "ahsi.js";
+  _input_file_name =
+    `tmcsplit`;
+const
+  _input_file_path =
+    `./${_input_file_name}`;
+const
+  _output_file_name =
+    `${_input_file_name}.js`;
 const
   _output = {
     path:
       _output_dir,
     filename:
-      _file_name
+      _output_file_name
 };
 const
   _yargs_ignore = {
@@ -43,38 +49,33 @@ const
           _yargs_helpers_ignore);
 module.exports = {
   entry:
-    './ahsi',
+    _input_file_path,
   output:
     _output,
   optimization: {
     moduleIds: 'deterministic',
   },
   resolve: {
-    fallback: {
+    alias: {
       "fs":
-        false,
-      "happy-opfs":
         _path.resolve(
           __dirname,
-          'node_modules/happy-opfs/dist/main.mjs'),
+          'node_modules/fs/fs'),
       "path":
-        false,
-      "@std/path":
         _path.resolve(
           __dirname,
-          'node_modules/@std/path/mod.js'),
-      "fs-worker":
-        _path.resolve(
-          __dirname,
-          'node_modules/crash-bash/crash/bash/fs-worker'),
-      "yargs":
+          'node_modules/path/mod.js'),
+    },
+    fallback: {
+      "utils":
         false,
-      "yargs/helpers":
+      "web-worker":
         false
     },
   },
   externals:
-    { yargs: 'yargs' },
+    { yargs:
+        'yargs' },
   plugins: [
     _yargs_ignore_plugin,
     _yargs_helpers_ignore_plugin
