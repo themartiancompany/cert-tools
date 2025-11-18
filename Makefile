@@ -52,7 +52,9 @@ NPM_FILES=\
   "README.md" \
   "COPYING" \
   "AUTHORS.rst" \
+  "fs-worker.webpack.config.cjs" \
   "lib$(_PROJECT)" \
+  "lib$(_PROJECT).webpack.config.cjs" \
   "package.json" \
   "$(_PROJECT)" \
   "webpack.config.cjs"
