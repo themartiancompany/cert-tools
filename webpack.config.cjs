@@ -23,6 +23,10 @@ const
       _output_file_name
 };
 const
+  _web_worker_ignore =
+  { resourceRegExp:
+      /^web-worker$/ };
+const
   _yargs_ignore =
   { resourceRegExp:
       /^yargs$/ };
@@ -37,6 +41,10 @@ const
 const
   _ignore_plugin =
     _webpack.IgnorePlugin; 
+const
+  _web_worker_ignore_plugin =
+    new _ignore_plugin(
+          _web_worker_ignore);
 const
   _yargs_ignore_plugin =
     new _ignore_plugin(
@@ -63,11 +71,17 @@ module.exports = {
         _path.resolve(
           __dirname,
           'node_modules/path/mod.js'),
+      "web-worker":
+        _path.resolve(
+          __dirname,
+          'node_modules/web-worker/mod.js'),
     },
     fallback: {
       "utils":
         false,
       "web-worker":
+        false,
+      "yargs":
         false
     },
   },
@@ -75,6 +89,7 @@ module.exports = {
     { yargs:
         'yargs' },
   plugins: [
+    _web_worker_ignore_plugin,
     _yargs_ignore_plugin,
     _yargs_helpers_ignore_plugin
   ]

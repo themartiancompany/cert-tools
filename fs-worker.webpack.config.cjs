@@ -11,7 +11,7 @@ const
     "fs-worker";
 const
   _input_file_path =
-    `./node_modules/fs/${_input_file_name}`;
+    `./node_modules/opfs/${_input_file_name}`;
 const
   _output_file_name =
     `${_input_file_name}.js`;
