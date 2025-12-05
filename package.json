@@ -2,7 +2,7 @@
   "name":
     "cert-tools",
   "version":
-    "0.0.4",
+    "0.0.5",
   "description":
     "OpenSSL certificates' tools written using the Forge TLS Javascript implementation",
   "funding": {
@@ -81,7 +81,8 @@
   "main":
     "libcert-gen",
   "bin":
-    "cert-gen",
+    { "cert-gen":
+        "cert-gen" },
   "scripts": {
     "build-fs-worker":
       "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
