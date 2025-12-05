@@ -2,9 +2,9 @@
   "name":
     "cert-tools",
   "version":
-    "0.0.2",
+    "0.0.3",
   "description":
-    "Generates private/public key pairs and X.509 certificates for HTTP web servers using Forge Javascript TLS implementation",
+    "OpenSSL certificates' tools written using the Forge TLS Javascript implementation",
   "funding": {
     "type":
       "patreon",

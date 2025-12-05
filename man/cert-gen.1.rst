@@ -1,74 +1,78 @@
 ==============
-tmcsplit
+cert-gen
 ==============
 
 --------------------------------------------------------
-The Martian Company's Split
+Certificate generator
 --------------------------------------------------------
-:Version: tmcsplit |version|
+:Version: cert-gen |version|
 :Manual section: 1
 
 Synopsis
 ========
 
-tmcsplit *option* *[arguments]*
+cert-gen *option*
 
 
 Description
 ===========
 
-Javascript GNU Split
-implementation.
+Generates an X509 version 3
+certificate using an existing private key
+or generating one at runtime.
 
+It depends on the Forge TLS
+Javascript implementation
+and on the Crash Javascript Library.
+
+It runs both in Node as in
+the browser.
 
 Options
 ========
 
--s input num-parts      Split the input file in
-                        the given number of parts.
--x input size-max       Split the input file into
-                        multiple parts with maximum
-                        file size of max_size bytes.
--m output [parts]       Merge the given parts into
-                        the output file.
+-i, --key-private=FILE          Use existing private key.
+-l, --keys-length=N             Keys pair length.
+-o, --output-file=FILE          Set output file.
 
+
+Validity options
+==================
+
+-B, --validity-start=DATE       Set activation date.
+-E, --validity-end=DATE         Set expiration date.
+
+
+Identity Options
+==================
+
+-D, --domain-name=DOMAIN        Set domain name.
+-C, --country-name=COUNTRY      Set country name.
+-S, --state-name=STATE          Set state name.
+-L, --locality-name=LOCALITY    Set locality name.
+-O, --organization-name=ORG     Set organization name.
+-U, --organization-unit=UNIT    Set organization unit.
+-s, --serial-number=SERIAL      Set serial number.
+
+-v --verbose            Enable verbose output.
 -h                      Display help.
-
-
-Examples
-============
-
-split \
-  -a \
-  "input.bin" \
-  5
-
-split-file \
-  -x \
-  "input.bin" \
-  457000
-
-split-file \
-  -m \
-  "output.bin" \
-  "part1" "part2" ...
 
 
 Bugs
 ====
 
-https://github.com/themartiancompany/node-split-file/-/issues
+https://github.com/themartiancompany/cert-tools/-/issues
 
 Copyright
 =========
 
-Copyright Tom Valk, Pellegrino Prevete. AGPL-3.0.
+Copyright Pellegrino Prevete. AGPL-3.0.
 
 See also
 ========
 
-* split
-* tmcsplit
-* tmccat
+* node-run
+* libcrash-js
+* tmcfs
 
 .. include:: variables.rst
