@@ -116,7 +116,7 @@ function
       "Index Development Team";
   }
   if ( key_private == "" ) {
-    output_file =
+    key_private =
       process.cwd() +
       "/key.pem";
   }

@@ -38,6 +38,8 @@ _error_display =
   _libcrash._error_display;
 _ext_rm =
   _libcrash._ext_rm;
+_file_exists =
+  _libcrash._file_exists;
 _file_read =
   _libcrash._file_read;
 _file_write =
@@ -57,7 +59,7 @@ _msg_error =
 
 async function
   _cert_gen(
-    _key_private,
+    _key_private_path,
     _keys_length,
     _serial_number,
     _validity_min,
@@ -77,7 +79,9 @@ async function
     _ext_key_usage,
     _key_usage,
     _key_pem,
+    _key_private,
     _keys,
+    _keys_pem,
     _ns_cert_type,
     _pem,
     _subject_alt_name,
@@ -85,25 +89,32 @@ async function
   _keys_length =
     Number(
       _keys_length);
-  if ( _key_private == "" ) ||
-     ( ! _file_exists(
-           _key_private) ) {
+  if ( _key_private_path == "" ||
+       ! _file_exists(
+           _key_private_path) ) {
     _keys =
       _rsa.generateKeyPair(
         _keys_length);
+    _key_pem =
+      _pki.privateKeyToPem(
+        _keys.privateKey);
+    _file_write(
+      _key_private_path,
+      _key_pem);
+    _key_private =
+      _keys.privateKey;
   }
   else {
     _key_pem =
       _file_read(
-        _key_private);
+        _key_private_path);
+    _key_private =
+      _pki.privateKeyFromPem(
+        _key_pem);
     _keys =
       { privateKey:
-          _file_read(
-            _key_private); }
+          _key_private };
   }
-  _keys =
-    _rsa.generateKeyPair(
-      _keys_length);
   _cert =
     _pki.createCertificate();
   _cert.publicKey =
@@ -227,9 +238,6 @@ async function
   _cert_pem =
     _pki.certificateToPem(
       _cert);
-  _keys_pem =
-    _pki.privateKeyToPem(
-      _keys.privateKey;
   if ( _output_file != "" ) {
     if ( typeof window !== 'undefined') {
       await _fs_worker_start(
@@ -239,9 +247,7 @@ async function
       _output_file,
       _cert_pem);
   }
-  console.log(
-    _rsa);
-  return [ _keys_pem,
+  return [ _key_pem,
 	   _cert_pem ];
 }
 

@@ -45,19 +45,16 @@ DOC_FILES=\
       *.rst) \
   $(wildcard \
       *.md)
-SCRIPT_FILES=\
-  $(wildcard \
-      $(_PROJECT)/*)
 NPM_FILES=\
   "README.md" \
   "COPYING" \
   "AUTHORS.rst" \
   "eslint.config.mjs" \
   "fs-worker.webpack.config.cjs" \
-  "lib$(_PROJECT)" \
-  "lib$(_PROJECT).webpack.config.cjs" \
+  "libcert-gen" \
+  "libcert-gen.webpack.config.cjs" \
   "package.json" \
-  "$(_PROJECT)" \
+  "cert-gen" \
   "webpack.config.cjs"
 
 all: build-man build-npm
@@ -78,8 +75,8 @@ install: install-scripts install-doc install-examples install-man
 install-scripts:
 
 	$(_INSTALL_EXE) \
-	  "$(_PROJECT)" \
-	  "$(LIB_DIR)/$(_PROJECT)"
+	  "cert-gen" \
+	  "$(LIB_DIR)/cert-gen"
 	$(_INSTALL_EXE) \
 	  "lib$(_PROJECT)" \
 	  "$(LIB_DIR)/lib$(_PROJECT)"
