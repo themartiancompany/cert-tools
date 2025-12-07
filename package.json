@@ -2,7 +2,7 @@
   "name":
     "cert-tools",
   "version":
-    "0.0.5",
+    "0.0.6",
   "description":
     "OpenSSL certificates' tools written using the Forge TLS Javascript implementation",
   "funding": {
