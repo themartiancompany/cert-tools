@@ -95,9 +95,11 @@ ur \
 ### Documentation
 
 Upon installation the manual can be accessed with
-`man tmcsplit` but really it's the same as
-GNU Split, so you can also refer to `man split`
-for what is it implemented.
+
+```bash
+man \
+  cert-gen
+```
 
 # License
 
