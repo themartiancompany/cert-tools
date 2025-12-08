@@ -89,7 +89,7 @@ package from the
 
 ```bash
 ur \
-  tmcsplit
+  cert-tools
 ```
 
 ### Documentation
