@@ -17,11 +17,10 @@
     "AUTHORS.rst",
     "COPYING",
     "README.md",
+    "dist",
     "eslint.config.mjs",
     "package.json",
-    "cert-gen.js",
     "cert-gen",
-    "fs-worker.js",
     "fs-worker.webpack.config.cjs",
     "index.html",
     "libcert-gen",
@@ -60,11 +59,15 @@
   },
   "devDependencies": {
     "crash-js-webpack":
-      "^0.0.3",
+      "^0.0.31",
     "eslint":
-      "^9.32.0",
+      "^10.3.0",
+    "@eslint/js":
+      "^10.0.1",
+    "globals":
+      "^17.3.0",
     "safely-serve":
-      "^0.0.8",
+      "^0.0.9",
     "webpack":
       "^5.102.1",
     "webpack-cli":
@@ -72,7 +75,7 @@
   },
   "dependencies": {
     "crash-js":
-      "^0.1.67",
+      "^0.1.11",
     "node-forge":
       "^1.3.3"
   },
@@ -85,11 +88,11 @@
         "cert-gen" },
   "scripts": {
     "build-fs-worker":
-      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'fs-worker.webpack.config.cjs' --stats-error-details && cp 'fs-worker.js' 'dist/cert-gen' && cp fs-worker.js 'dist/libcert-gen'",
     "build-lib":
-      "npx webpack --mode 'production' --config 'libcert-gen.webpack.config.cjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'libcert-gen.webpack.config.cjs' --stats-error-details && mv 'libcert-gen.js' 'dist/libcert-gen.js'",
     "build-bin":
-      "npx webpack --mode 'production' --config 'webpack.config.cjs' --stats-error-details",
+      "npx webpack --mode 'production' --config 'webpack.config.cjs' --stats-error-details && mv 'cert-gen.js' 'dist/cert-gen.js'",
     "build":
       "npm run lint && npm run build-fs-worker && npm run build-lib && npm run build-bin",
     "lint":

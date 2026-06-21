@@ -15,12 +15,13 @@ const
 const
   _output_file_name =
     `${_input_file_name}.js`;
-_output = {
-  path:
-    _output_dir,
-  filename:
-    _output_file_name
-};
+const
+  _output = {
+    path:
+      _output_dir,
+    filename:
+      _output_file_name
+  };
 module.exports = {
   entry:
     _input_file_path,
@@ -31,6 +32,10 @@ module.exports = {
   },
   resolve: {
     alias: {
+      "node:fs":
+        _path.resolve(
+          __dirname,
+          'node_modules/opfs/opfs'),
       "fs":
         _path.resolve(
           __dirname,
@@ -38,7 +43,7 @@ module.exports = {
       "opfs":
         _path.resolve(
           __dirname,
-          'node_modules/fs/fs'),
+          'node_modules/opfs/opfs'),
       "path":
         _path.resolve(
           __dirname,

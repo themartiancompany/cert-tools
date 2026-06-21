@@ -49,12 +49,13 @@ NPM_FILES=\
   "README.md" \
   "COPYING" \
   "AUTHORS.rst" \
+  "cert-gen" \
+  "dist" \
   "eslint.config.mjs" \
   "fs-worker.webpack.config.cjs" \
   "libcert-gen" \
   "libcert-gen.webpack.config.cjs" \
   "package.json" \
-  "cert-gen" \
   "webpack.config.cjs"
 
 all: build-man build-npm
