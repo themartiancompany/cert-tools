@@ -108,7 +108,7 @@ build-npm:
 	_version="$$( \
 	  npm \
 	    view \
-	      "$$(pwd)" \
+	      "$${PWD}" \
 	      "version")"; \
 	npm \
 	  install; \
@@ -131,7 +131,7 @@ install-npm:
 	_version="$$( \
 	  npm \
 	    view \
-	      "$$(pwd)" \
+	      "$${PWD}" \
 	      "version")"; \
 	npm \
 	  install \
