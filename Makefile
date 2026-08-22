@@ -98,7 +98,7 @@ build-webpack:
 	  -r \
 	  "cert-gen" \
 	  "dist" \
-	  "lib$(_PROJECT)" \
+	  "libcert-gen" \
 	  "webpack.config.cjs" \
 	  "build"
 	_webpack=( \
@@ -137,8 +137,6 @@ build-webpack:
 	cp \
 	  "cert-gen.js" \
 	  "dist/cert-gen/cert-gen.js"
-
-
 
 check: eslint
 

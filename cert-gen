@@ -311,7 +311,7 @@ function
       "",
       "Usage:",
       "",
-      "  cert-gen",
+      `  ${app_name}`,
       "    [options]",
       "",
       "  options:",
