@@ -54,6 +54,11 @@ const
   _cmdline_check =
     _libcrash._cmdline_check;
 /* global
+     _exit */
+const
+  _exit =
+    _libcrash._exit;
+/* global
      _msg_info */
 const
   _msg_info =
@@ -203,23 +208,23 @@ function
 function
   _config_show() {
   let
-    _line,
-    _text;
-  _text = [
-    `${app_name} configuration:`,
-    `      Runtime environment:   ${runtime_environment}`,
-    `               Key length:   ${keys_length}`,
-    `            Serial number:   ${serial_number}`,
-    `              Valid after:   ${validity_min}`,
-    `               Expires on:   ${validity_max}`,
-    `              Domain name:   ${domain_name}`,
-    `                  Country:   ${country_name}`,
-    `                    State:   ${state_name}`,
-    `                 Locality:   ${locality_name}`,
-    `             Organization:   ${organization_name}`,
-    `        Organization unit:   ${organization_unit}`,
-    `              Output file:   ${output_file}`,
-  ];
+    _line;
+  const
+    _text = [
+      `${app_name} configuration:`,
+      `      Runtime environment:   ${runtime_environment}`,
+      `               Key length:   ${keys_length}`,
+      `            Serial number:   ${serial_number}`,
+      `              Valid after:   ${validity_min}`,
+      `               Expires on:   ${validity_max}`,
+      `              Domain name:   ${domain_name}`,
+      `                  Country:   ${country_name}`,
+      `                    State:   ${state_name}`,
+      `                 Locality:   ${locality_name}`,
+      `             Organization:   ${organization_name}`,
+      `        Organization unit:   ${organization_unit}`,
+      `              Output file:   ${output_file}`,
+    ];
   for ( _line of _text ) {
     _msg_info(
       _line);
@@ -230,57 +235,56 @@ function
   _usage(
     _exit_code) {
   let
-    _line,
-    _text;
-  _text = [
-    "",
-    "Generates a public / private key pair and an X.509v3 certificate.",
-    "",
-    "Usage:",
-    "",
-    "  cert-gen",
-    "    [options]",
-    "",
-    "  options:",
-    "     -i, --key-private=FILE          Use existing private key.",
-    `                                     Default: '${key_private}'`,
-    "     -l, --keys-length=N             Keys pair length.",
-    `                                     Default: '${keys_length}'`,
-    "     -o, --output-file=FILE          Set output file.",
-    `                                     Default: '${output_file}'`,
-    "",
-    "  validity options:",
-    "     -B, --validity-start=DATE       Set activation date.",
-    `                                     Default: '${validity_min}'`,
-    "     -E, --validity-end=DATE         Set expiration date.",
-    `                                     Default: '${validity_max}'`,
-    "",
-    "  identity options:",
-    "     -D, --domain-name=DOMAIN        Set domain name.",
-    `                                     Default: '${domain_name}'`,
-    "     -C, --country-name=COUNTRY      Set country name.",
-    `                                     Default: '${country_name}'`,
-    "     -S, --state-name=STATE          Set state name.",
-    `                                     Default: '${state_name}'`,
-
-    "     -L, --locality-name=LOCALITY    Set locality name.",
-    `                                     Default: '${locality_name}'`,
-    "     -O, --organization-name=ORG     Set organization name.",
-    `                                     Default: '${organization_name}'`,
-    "     -U, --organization-unit=UNIT    Set organization unit.",
-    `                                     Default: '${organization_unit}'`,
-    "     -s, --serial-number=SERIAL      Set serial number.",
-    `                                     Default: '${serial_number}'`,
-    "",
-    "     -h --help                       This message.",
-    "     -v --verbose                    Enable verbose output.",
-    "",
-  ];
+    _line;
+  const
+    _text = [
+      "",
+      "Generates a public / private key pair and an X.509v3 certificate.",
+      "",
+      "Usage:",
+      "",
+      "  cert-gen",
+      "    [options]",
+      "",
+      "  options:",
+      "     -i, --key-private=FILE          Use existing private key.",
+      `                                     Default: '${key_private}'`,
+      "     -l, --keys-length=N             Keys pair length.",
+      `                                     Default: '${keys_length}'`,
+      "     -o, --output-file=FILE          Set output file.",
+      `                                     Default: '${output_file}'`,
+      "",
+      "  validity options:",
+      "     -B, --validity-start=DATE       Set activation date.",
+      `                                     Default: '${validity_min}'`,
+      "     -E, --validity-end=DATE         Set expiration date.",
+      `                                     Default: '${validity_max}'`,
+      "",
+      "  identity options:",
+      "     -D, --domain-name=DOMAIN        Set domain name.",
+      `                                     Default: '${domain_name}'`,
+      "     -C, --country-name=COUNTRY      Set country name.",
+      `                                     Default: '${country_name}'`,
+      "     -S, --state-name=STATE          Set state name.",
+      `                                     Default: '${state_name}'`,
+      "     -L, --locality-name=LOCALITY    Set locality name.",
+      `                                     Default: '${locality_name}'`,
+      "     -O, --organization-name=ORG     Set organization name.",
+      `                                     Default: '${organization_name}'`,
+      "     -U, --organization-unit=UNIT    Set organization unit.",
+      `                                     Default: '${organization_unit}'`,
+      "     -s, --serial-number=SERIAL      Set serial number.",
+      `                                     Default: '${serial_number}'`,
+      "",
+      "     -h --help                       This message.",
+      "     -v --verbose                    Enable verbose output.",
+      "",
+    ];
   for ( _line of _text ) {
     console.log(
       _line);
   }
-  process.exit(
+  _exit(
     _exit_code);
 }
 

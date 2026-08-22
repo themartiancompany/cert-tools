@@ -28,10 +28,6 @@ import globals from "globals";
 import { defineConfig } from "eslint/config";
 
 const
-  _project =
-    "encoding-tools";
-
-const
   _ignores = [
     "build/**",
     "dist/**",

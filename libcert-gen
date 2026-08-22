@@ -94,7 +94,6 @@ async function
     _organization_unit,
     _output_file) {
   let
-    _cert,
     _key_pem,
     _key_private,
     _keys,
