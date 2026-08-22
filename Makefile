@@ -37,6 +37,13 @@ MAN_DIR?=$(DESTDIR)$(PREFIX)/share/man
 NODE_DIR=$(PREFIX)/lib/node_modules/$(_PROJECT)
 BUILD_NPM_DIR=build
 
+
+_MAKE_LINK=\
+  ln \
+    -s
+_MAKE_EXE=\
+  chmod \
+    755
 _INSTALL_FILE=\
   install \
     -vDm644
@@ -192,7 +199,7 @@ install-scripts:
 	                '.files[]')) \
 	    "$(LIB_DIR)/nodejs"; \
 	  $(_MAKE_EXE) \
-	    "$(LIB_DIR)/nodejs/$(_PROJECT)"; \
+	    "$(LIB_DIR)/nodejs/cert-gen"; \
 	elif [[ "$(_NPM)" == "true" ]]; then \
 	  make \
 	    install-npm; \
