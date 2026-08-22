@@ -35,6 +35,9 @@
   /* global
        runtime_environment:
          writable */
+/* global
+     verbose:
+       writable */
 
 const
   _libcrash_module =
@@ -68,6 +71,21 @@ const
 const
   _msg_error =
     _libcrash._msg_error;
+/* global
+     _override_set */
+const
+  _override_set =
+    _libcrash._override_set;
+/* global
+     _pwd */
+const
+  _pwd =
+    _libcrash._pwd;
+/* global
+     _yargv_get */
+const
+  _yargv_get =
+    _libcrash._yargv_get;
 const
   _libcert_gen_module =
     await import(
@@ -150,14 +168,14 @@ function
 
 function 
   _overrides_set() {
-  if ( keys_length == "" ) {
-    keys_length =
-      "4096";
-  }
-  if ( validity_min == "" ) {
-    validity_min =
-      new Date();
-  }
+  _override_set(
+    "keys",
+    "length",
+    "4096");
+  _override_set(
+    "validity",
+    "min",
+    new Date());
   if ( validity_max == "" ) {
     validity_max =
       new Date();
@@ -165,44 +183,45 @@ function
       validity_min.getFullYear() +
       1);
   }
-  if ( serial_number == "" ) {
-    serial_number =
-      "01";
-  }
-  if ( domain_name == "" ) {
-    domain_name =
-      "localhost";
-  }
-  if ( country_name == "" ) {
-    country_name =
-      "LP";
-  }
-  if ( state_name == "" ) {
-    state_name =
-      "Nananapoli";
-  }
-  if ( locality_name == "" ) {
-    locality_name =
-      "Pollena Trocchia";
-  }
-  if ( organization_name == "" ) {
-    organization_name =
-      "The Martian Company";
-  }
-  if ( organization_unit == "" ) {
-    organization_unit =
-      "Index Development Team";
-  }
-  if ( key_private == "" ) {
-    key_private =
-      process.cwd() +
-      "/key.pem";
-  }
-  if ( output_file == "" ) {
-    output_file =
-      process.cwd() +
-      "/cert.pem";
-  }
+  _override_set(
+    "serial",
+    "number",
+    "01");
+  _override_set(
+    "domain",
+    "name",
+    "localhost");
+  _override_set(
+    "country",
+    "name",
+    "LP");
+  _override_set(
+    "state",
+    "name",
+    "Nananapoli");
+  _override_set(
+    "locality",
+    "name",
+    "Pollena Trocchia");
+  _override_set(
+    "organization",
+    "name",
+    "The Martian Company");
+  _override_set(
+    "organization",
+    "unit",
+    "Index Development Team");
+  const
+    _current_dir =
+      _pwd();
+  _override_set(
+    "key",
+    "private",
+    `${_current_dir}/key.pem`);
+  _override_set(
+    "key",
+    "private",
+    `${_current_dir}/cert.pem`);
 }
 
 function
@@ -291,13 +310,12 @@ function
 function
   _cmdline_parse_help(
     _argv) {
-  let
-    _help_display;
-  _help_display =
-    _argv[
-      "help"] ||
-    _argv[
-      "h"];
+  const
+    _help_display =
+      _argv[
+        "help"] ||
+      _argv[
+        "h"];
   if ( _help_display ) {
     quiet =
       "n";
@@ -312,8 +330,9 @@ function
     _argv) {
   if ( _argv[
          "_"].length < 1 ) {
-    _msg =
-      "Input file argument required.";
+    const
+      _msg =
+        "Input file argument required.";
     _msg_error(
       _msg,
       0);
@@ -325,8 +344,7 @@ function
 function 
   _cmdline_parse() {
   let
-    _argv,
-    _msg;
+    _argv;
   _argv =
     _yargv_get();
   quiet = 
