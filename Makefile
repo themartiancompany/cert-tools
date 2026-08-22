@@ -214,6 +214,12 @@ install-scripts:
 
 build-man:
 
+	git \
+	  submodule \
+	    update \
+	    --init \
+	      "man" || \
+	true
 	mkdir \
 	  -p \
 	  "build/man"
