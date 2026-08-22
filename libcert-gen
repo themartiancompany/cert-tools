@@ -115,19 +115,14 @@ async function
     _organization_unit,
     _output_file) {
   let
-    _alt_names,
     _basic_constraints,
     _cert,
-    _ext_key_usage,
     _key_usage,
     _key_pem,
     _key_private,
     _keys,
     _keys_pem,
-    _ns_cert_type,
-    _pem,
-    _subject_alt_name,
-    _subject_key_identifier;
+    _pem;
   _keys_length =
     Number(
       _keys_length);
@@ -216,54 +211,59 @@ async function
         true,
       dataEncipherment: 
         true };
-  _ext_key_usage =
-    { name:
-        "extKeyUsage",
-      serverAuth: 
-        true,
-      clientAuth: 
-        true,
-      codeSigning: 
-        true,
-      emailProtection: 
-        true,
-      timeStamping: 
-        true };
-  _ns_cert_type =
-    { name:
-        "nsCertType",
-      client: 
-        true,
-      server: 
-        true,
-      email: 
-        true,
-      objsign: 
-        true,
-      sslCA: 
-        true,
-      emailCA: 
-        true,
-      objCA: 
-        true };
-  _alt_names = [
-    { type:
-        6, // URI
-      value:
-        "http://localhost/webid#me" },
-    { type:
-        7, // IP
-      value:
-        "127.0.0.1" }
-  ];
-  _subject_alt_name =
-    { name:
-        "subjectAltName",
-      altNames:
-        _alt_names };
-  _subject_key_identifier =
-    { name:
-        "subjectKeyIdentifier" };
+  const
+    _ext_key_usage =
+      { name:
+          "extKeyUsage",
+        serverAuth: 
+          true,
+        clientAuth: 
+          true,
+        codeSigning: 
+          true,
+        emailProtection: 
+          true,
+        timeStamping: 
+          true };
+  const
+    _ns_cert_type =
+      { name:
+          "nsCertType",
+        client: 
+          true,
+        server: 
+          true,
+        email: 
+          true,
+        objsign: 
+          true,
+        sslCA: 
+          true,
+        emailCA: 
+          true,
+        objCA: 
+          true };
+  const
+    _alt_names = [
+      { type:
+          6, // URI
+        value:
+          "http://localhost/webid#me" },
+      { type:
+          7, // IP
+        value:
+          "127.0.0.1" }
+    ];
+  const
+    _subject_alt_name =
+      { name:
+          "subjectAltName",
+        altNames:
+          _alt_names };
+  const
+    _subject_key_identifier =
+      { name:
+          "subjectKeyIdentifier" };
   const
     _extensions = [
       _basic_constraints,
