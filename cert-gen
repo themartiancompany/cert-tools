@@ -29,15 +29,15 @@
 /* global
      quiet:
        writable */
-  /* global
-       app_name:
-         writable */
-  /* global
-       app_opts:
-         writable */
-  /* global
-       runtime_environment:
-         writable */
+/* global
+     app_name:
+       writable */
+/* global
+     app_opts:
+       writable */
+/* global
+     runtime_environment:
+       writable */
 /* global
      verbose:
        writable */
@@ -65,6 +65,11 @@ const
   _exit =
     _libcrash._exit;
 /* global
+     _global_get */
+const
+  _global_get =
+    _libcrash._global_get;
+/* global
      _msg_info */
 const
   _msg_info =
@@ -85,6 +90,11 @@ const
   _pwd =
     _libcrash._pwd;
 /* global
+     _set */
+const
+  _set =
+    _libcrash._set;
+/* global
      _yargv_get */
 const
   _yargv_get =
@@ -101,71 +111,107 @@ const
 
 function
   _global_variables() {
-  app_name =
-    "cert-gen";
-  app_opts =
-    [];
+  const
+    _global =
+      _global_get();
+  _set(
+    "runtime",
+    "environment",
+    "");
+  _set(
+    "app",
+    "name",
+    "cert-gen");
+  _set(
+    "app",
+    "name",
+    []);
   /* global
        key_private:
          writable */
-  key_private =
-    "";
+  _set(
+    "key",
+    "private",
+    "");
   /* global
        keys_length:
          writable */
-  keys_length =
-    "";
+  _set(
+    "keys",
+    "length",
+    "");
   /* global
        serial_number:
          writable */
-  serial_number =
-    "";
+  _set(
+    "serial",
+    "number",
+    "");
   /* global
        validity_min:
          writable */
-  validity_min =
-    "";
+  _set(
+    "validity",
+    "min",
+    "");
   /* global
        validity_max:
          writable */
-  validity_max =
-    "";
+  _set(
+    "validity",
+    "max",
+    "");
   /* global
        domain_name:
          writable */
-  domain_name =
-    "";
+  _set(
+    "domain",
+    "name",
+    "");
   /* global
        country_name:
          writable */
-  country_name =
-    "";
+  _set(
+    "country",
+    "name",
+    "");
   /* global
        state_name:
          writable */
-  state_name =
-    "";
+  _set(
+    "state",
+    "name",
+    "");
   /* global
        locality_name:
          writable */
-  locality_name =
-    "";
+  _set(
+    "locality",
+    "name",
+    "");
   /* global
        organization_name:
          writable */
-  organization_name =
-    "";
+  _set(
+    "organization",
+    "name",
+    "");
   /* global
        organization_unit:
          writable */
-  organization_unit =
-    "";
+  _set(
+    "organization",
+    "unit",
+    "");
   /* global
        output_file:
          writable */
-  output_file =
-    "";
-  quiet =
+  _set(
+    "output",
+    "file",
+    "");
+  _global[
+    "quiet"] =
     "";
 }
 

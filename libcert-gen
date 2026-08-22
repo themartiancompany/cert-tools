@@ -73,7 +73,7 @@ const
     _libcrash._require;
 const
   _forge_module =
-    _require(
+    await _require(
       'node-forge');
 const
   _pki =

@@ -72,7 +72,7 @@ NPM_FILES=\
   "package.json" \
   "webpack.config.cjs"
 
-all: build-man build-npm
+all: build
 
 build:
 
@@ -158,6 +158,8 @@ install-scripts:
 install-scripts:
 
 	if [[ "$(_NPM)" == "false" ]]; then \
+	  $(_INSTALL_DIR) \
+	    "$(LIB_DIR)/nodejs"; \
 	  if [[ ! -s "$(BIN_DIR)/$(_PROJECT)" ]]; then \
 	    $(_MAKE_EXE) \
 	      "$(LIB_DIR)/nodejs/cert-gen"; \
@@ -165,8 +167,6 @@ install-scripts:
 	      "$(PREFIX)/lib/$(_PROJECT)/nodejs/cert-gen" \
 	      "$(BIN_DIR)/cert-gen"; \
 	  fi; \
-	  $(_INSTALL_DIR) \
-	    "$(LIB_DIR)/nodejs"; \
 	  rm \
 	    "$(LIB_DIR)/node_modules" || \
 	    true; \
@@ -184,10 +184,12 @@ install-scripts:
 	      "$(PREFIX)/lib/$(_PROJECT)/nodejs" \
 	      "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT_NPM)"; \
 	  fi; \
-	  $(_MAKE_LINK) \
-	    "$(PREFIX)/lib/$(_PROJECT)/nodejs" \
-	    "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT)" || \
-	    true; \
+	  if [[ ! -s "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT)" ]]; then \
+	    $(_MAKE_LINK) \
+	      "$(PREFIX)/lib/$(_PROJECT)/nodejs" \
+	      "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT)" || \
+	      true; \
+	  fi; \
 	  cp \
 	    -r \
 	    $$(printf \
@@ -208,17 +210,6 @@ install-scripts:
 	    "$(LIB_DIR)/nodejs" || \
 	  true; \
 	fi
-
-	$(_INSTALL_EXE) \
-	  "cert-gen" \
-	  "$(LIB_DIR)/cert-gen"
-	$(_INSTALL_EXE) \
-	  "lib$(_PROJECT)" \
-	  "$(LIB_DIR)/lib$(_PROJECT)"
-	ln \
-	  -s \
-	  "$(PREFIX)/lib/$(_PROJECT)/$(_PROJECT)" \
-	  "$(BIN_DIR)/$(_PROJECT)"
 
 build-man:
 
@@ -281,7 +272,7 @@ install-npm:
 	  "$(DESTDIR)$(PREFIX)/lib"; \
 	ln \
 	  -s \
-	  "$(NODE_DIR)" \
+	  "$(PREFIX)/lib/node_modules/$(_PROJECT_NPM)" \
 	  "$(LIB_DIR)" || \
 	true
 
@@ -308,5 +299,13 @@ install-man:
 	rst2man \
 	  "man/$(_PROJECT).1.rst" \
 	  "$(MAN_DIR)/man1/$(_PROJECT).1"
+
+uninstall-scripts:
+
+	rm \
+	  -rf \
+	  "$(BIN_DIR)/cert-gen" \
+	  "$(LIB_DIR)" \
+	  "$(DESTDIR)$(PREFIX)/lib/node_modules/$(_PROJECT_NPM)"
 
 .PHONY: check build-man build-npm install install-doc install-man install-npm install-scripts shellcheck
