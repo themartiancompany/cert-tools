@@ -21,6 +21,9 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+/* eslint-disable
+     no-unused-vars */
+
 /* Crash Javascript global variables */
 
 /* global
@@ -343,10 +346,9 @@ function
 
 function 
   _cmdline_parse() {
-  let
-    _argv;
-  _argv =
-    _yargv_get();
+  const
+    _argv =
+      _yargv_get();
   quiet = 
     "y";
   runtime_environment =
@@ -484,9 +486,6 @@ function
   _url_parse() {
   runtime_environment =
     "browser";
-  const
-    _argv =
-      _argv_url_get();
   key_private =
     _argv_url_get(
       "key_private")[

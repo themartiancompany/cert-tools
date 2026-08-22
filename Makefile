@@ -24,6 +24,7 @@
 #    along with this program.
 #    If not, see <https://www.gnu.org/licenses/>.
 
+_NPM ?= false
 PREFIX ?= /usr/local
 _PROJECT=cert-tools
 _PROJECT_NPM=$(_PROJECT)
