@@ -21,10 +21,25 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
+  /* global
+       app_name:
+         writable */
+  /* global
+       app_opts:
+         writable */
+
 const
-  _libcrash =
+  _libcrash_module =
     await import(
       'crash-js');
+const
+  _libcrash =
+    _libcrash_module.default;
 /* global
      _cmdline_check */
 const
@@ -54,28 +69,66 @@ function
   _global_variables() {
   app_name =
     "cert-gen";
+  app_opts =
+    [];
+  /* global
+       key_private:
+         writable */
   key_private =
     "";
+  /* global
+       key_length:
+         writable */
   keys_length =
     "";
+  /* global
+       serial_number:
+         writable */
   serial_number =
     "";
+  /* global
+       validity_min:
+         writable */
   validity_min =
     "";
+  /* global
+       validity_max:
+         writable */
   validity_max =
     "";
+  /* global
+       domain_name:
+         writable */
   domain_name =
     "";
+  /* global
+       country_name:
+         writable */
   country_name =
     "";
+  /* global
+       state_name:
+         writable */
   state_name =
     "";
+  /* global
+       locality_name:
+         writable */
   locality_name =
     "";
+  /* global
+       organization_name:
+         writable */
   organization_name =
     "";
+  /* global
+       organization_unit:
+         writable */
   organization_unit =
     "";
+  /* global
+       output_file:
+         writable */
   output_file =
     "";
   quiet =

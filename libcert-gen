@@ -35,11 +35,6 @@ const
   _libcrash =
     _libcrash_module.default;
 /* global
-     _error_display */
-const
-  _error_display =
-    _libcrash._error_display;
-/* global
      _ext_rm */
 const
   _ext_rm =
@@ -121,7 +116,6 @@ async function
     _output_file) {
   let
     _alt_names,
-    _attrs,
     _basic_constraints,
     _cert,
     _ext_key_usage,
@@ -173,32 +167,33 @@ async function
     _validity_min;
   _cert.validity.notAfter =
     _validity_max;
-  _attrs = [
-    { name:
-        'commonName',
-      value:
-        _domain_name },
-    { name:
-        'countryName',
-      value:
-        _country_name },
-    { shortName:
-        'ST',
-      value:
-        _state_name },
-    { name:
-        'localityName',
-      value:
-        _locality_name },
-    { name:
-        'organizationName',
-      value:
-        _organization_name },
-    { shortName:
-        'OU',
-      value:
-        _organization_unit }
-  ];
+  const
+    _attrs = [
+      { name:
+          'commonName',
+        value:
+          _domain_name },
+      { name:
+          'countryName',
+        value:
+          _country_name },
+      { shortName:
+          'ST',
+        value:
+          _state_name },
+      { name:
+          'localityName',
+        value:
+          _locality_name },
+      { name:
+          'organizationName',
+        value:
+          _organization_name },
+      { shortName:
+          'OU',
+        value:
+          _organization_unit }
+    ];
   _cert.setSubject(
     _attrs);
   _cert.setIssuer(
@@ -269,23 +264,25 @@ async function
   _subject_key_identifier =
     { name:
         "subjectKeyIdentifier" };
-  _extensions = [
-    _basic_constraints,
-    _key_usage,
-    _ext_key_usage,
-    _ns_cert_type,
-    _subject_alt_name,
-    _subject_key_identifier
-  ];
+  const
+    _extensions = [
+      _basic_constraints,
+      _key_usage,
+      _ext_key_usage,
+      _ns_cert_type,
+      _subject_alt_name,
+      _subject_key_identifier
+    ];
   _cert.setExtensions(
     _extensions);
   _cert.sign(
     _keys.privateKey);
   console.log(
     _cert);
-  _cert_pem =
-    _pki.certificateToPem(
-      _cert);
+  const
+    _cert_pem =
+      _pki.certificateToPem(
+        _cert);
   if ( _output_file != "" ) {
     if ( typeof window !== 'undefined') {
       await _fs_worker_start(
