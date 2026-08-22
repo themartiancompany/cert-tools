@@ -21,12 +21,6 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-/* Crash Javascript global variables */
-
-/* global
-     quiet:
-       writable */
-
 const
   _libcrash_module =
     await import(
@@ -34,11 +28,6 @@ const
 const
   _libcrash =
     _libcrash_module.default;
-/* global
-     _ext_rm */
-const
-  _ext_rm =
-    _libcrash._ext_rm;
 /* global
      _file_exists */
 const
@@ -59,16 +48,6 @@ const
 const
   _fs_worker_start =
     _libcrash._fs_worker_start;
-/* global
-     _json_read */
-const
-  _json_read =
-    _libcrash._json_read;
-/* global
-     _ls */
-const
-  _ls =
-    _libcrash._ls;
 /* global
      _mkdir */
 const
@@ -115,9 +94,7 @@ async function
     _organization_unit,
     _output_file) {
   let
-    _basic_constraints,
     _cert,
-    _key_usage,
     _key_pem,
     _key_private,
     _keys,
@@ -152,8 +129,9 @@ async function
       { privateKey:
           _key_private };
   }
-  _cert =
-    _pki.createCertificate();
+  const
+    _cert =
+      _pki.createCertificate();
   _cert.publicKey =
     _keys.publicKey;
   _cert.serialNumber =
@@ -193,24 +171,26 @@ async function
     _attrs);
   _cert.setIssuer(
     _attrs);
-  _basic_constraints =
-    { name:
-        "basicConstraints",
-      cA: 
-        true };
-  _key_usage =
-    { name:
-        "keyUsage",
-      keyCertSign: 
-        true,
-      digitalSignature: 
-        true,
-      nonRepudiation: 
-        true,
-      keyEncipherment: 
-        true,
-      dataEncipherment: 
-        true };
+  const
+    _basic_constraints =
+      { name:
+          "basicConstraints",
+        cA: 
+          true };
+  const
+    _key_usage =
+      { name:
+          "keyUsage",
+        keyCertSign: 
+          true,
+        digitalSignature: 
+          true,
+        nonRepudiation: 
+          true,
+        keyEncipherment: 
+          true,
+        dataEncipherment: 
+          true };
   const
     _ext_key_usage =
       { name:

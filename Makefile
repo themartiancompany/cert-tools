@@ -86,11 +86,11 @@ build:
 
 build-webpack:
 
-	$(INSTALL_DIR) \
-	  "build/dist/crash-js"
 	cp \
 	  -r \
-	  "$(_PROJECT)" \
+	  "cert-gen" \
+	  "dist" \
+	  "lib$(_PROJECT)" \
 	  "webpack.config.cjs" \
 	  "build"
 	_webpack=( \
@@ -104,24 +104,31 @@ build-webpack:
 	fi; \
 	cd \
 	  "build"; \
-        "${_webpack[@]}" \
-	  --mode \
-	    'production' \
-	  --config \
-	  'fs-worker.webpack.config.cjs' \
-	  --stats-error-details; \
-	mv \
+	if [[ ! -e "fs-worker.js" ]]; then \
+          "${_webpack[@]}" \
+	    --mode \
+	      'production' \
+	    --config \
+	    'fs-worker.webpack.config.cjs' \
+	    --stats-error-details; \
+	fi; \
+	cp \
 	  'fs-worker.js' \
-	  'dist/crash-js/fs-worker.js'; \
-        "${_webpack[@]}" \
-	  --mode \
-	    'production' \
-	  --config \
-	    'webpack.config.cjs' \
-	  --stats-error-details; \
-	mv \
-	  "$(_PROJECT).js" \
-	  "dist/$(_PROJECT)"
+	  'dist/cert-gen/fs-worker.js'; \
+	cp \
+	  'fs-worker.js' \
+	  'dist/libcert-gen/fs-worker.js'; \
+	if [[ ! -e "cert-gen.js" ]]; then \
+          "${_webpack[@]}" \
+	    --mode \
+	      'production' \
+	    --config \
+	      'webpack.config.cjs' \
+	    --stats-error-details; \
+	fi; \
+	cp \
+	  "cert-gen.js" \
+	  "dist/cert-gen/cert-gen.js"
 
 
 
