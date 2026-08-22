@@ -2,7 +2,7 @@
   "name":
     "cert-tools",
   "version":
-    "0.0.15",
+    "0.0.16",
   "description":
     "OpenSSL certificates' tools written using the Forge TLS Javascript implementation",
   "funding": {
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "crash-js-webpack":
-      "^0.0.52",
+      "^0.0.53",
     "eslint":
       "^10.3.0",
     "@eslint/js":
@@ -68,13 +68,13 @@
     "safely-serve":
       "^0.0.9",
     "webpack":
-      "^5.102.1",
+      "^5.109.2",
     "webpack-cli":
       "^7.2.2"
   },
   "dependencies": {
     "libcrash-js":
-      "npm:crash-js@^0.111111111111111.1111111111111111",
+      "npm:crash-js@^0.1111111111111111.1111111111111111",
     "node-forge":
       "^1.4.0"
   },
