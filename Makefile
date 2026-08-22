@@ -137,6 +137,17 @@ build-webpack:
 	cp \
 	  "cert-gen.js" \
 	  "dist/cert-gen/cert-gen.js"
+	if [[ ! -e "libcert-gen.js" ]]; then \
+          "${_webpack[@]}" \
+	    --mode \
+	      'production' \
+	    --config \
+	      'libcert-gen.webpack.config.cjs' \
+	    --stats-error-details; \
+	fi; \
+	cp \
+	  "cert-gen.js" \
+	  "dist/libcert-gen/cert-gen.js"
 
 check: eslint
 
