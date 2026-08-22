@@ -21,41 +21,89 @@
 //    You should have received a copy of the GNU Affero General Public License
 //    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+/* Crash Javascript global variables */
+
+/* global
+     quiet:
+       writable */
 
 const
-  _forge_module =
-    require(
-      'node-forge');
-_pki =
-  _forge_module.pki;
-_rsa =
-  _pki.rsa;
+  _libcrash_module =
+    await import(
+      'crash-js');
 const
   _libcrash =
-  require(
-    'crash-js');
-_error_display =
-  _libcrash._error_display;
-_ext_rm =
-  _libcrash._ext_rm;
-_file_exists =
-  _libcrash._file_exists;
-_file_read =
-  _libcrash._file_read;
-_file_write =
-  _libcrash._file_write;
-_fs_worker_start =
-  _libcrash._fs_worker_start;
-_json_read =
-  _libcrash._json_read;
-_ls =
-  _libcrash._ls;
-_mkdir =
-  _libcrash._mkdir;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+    _libcrash_module.default;
+/* global
+     _error_display */
+const
+  _error_display =
+    _libcrash._error_display;
+/* global
+     _ext_rm */
+const
+  _ext_rm =
+    _libcrash._ext_rm;
+/* global
+     _file_exists */
+const
+  _file_exists =
+    _libcrash._file_exists;
+/* global
+     _file_read */
+const
+  _file_read =
+    _libcrash._file_read;
+/* global
+     _file_write */
+const
+  _file_write =
+    _libcrash._file_write;
+/* global
+     _fs_worker_start */
+const
+  _fs_worker_start =
+    _libcrash._fs_worker_start;
+/* global
+     _json_read */
+const
+  _json_read =
+    _libcrash._json_read;
+/* global
+     _ls */
+const
+  _ls =
+    _libcrash._ls;
+/* global
+     _mkdir */
+const
+  _mkdir =
+    _libcrash._mkdir;
+/* global
+     _msg_info */
+const
+  _msg_info =
+    _libcrash._msg_info;
+/* global
+     _msg_error */
+const
+  _msg_error =
+    _libcrash._msg_error;
+/* global
+     _require */
+const
+  _require =
+    _libcrash._require;
+const
+  _forge_module =
+    _require(
+      'node-forge');
+const
+  _pki =
+    _forge_module.pki;
+const
+  _rsa =
+    _pki.rsa;
 
 async function
   _cert_gen(
@@ -248,10 +296,14 @@ async function
       _cert_pem);
   }
   return [ _key_pem,
-	   _cert_pem ];
+           _cert_pem ];
 }
 
-module.exports = {
-  _cert_gen:
-    _cert_gen
+export {
+  _cert_gen
 };
+
+// module.exports = {
+//   _cert_gen:
+//     _cert_gen
+// };

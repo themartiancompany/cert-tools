@@ -36,7 +36,8 @@ const
     "build/**",
     "dist/**",
     "fs-worker.js",
-    `${_project}.js`,
+    `cert-gen.js`,
+    `libcert-gen.js`,
     "node_modules/**",
     "eslint.config.js",
     "man/**"
@@ -52,11 +53,8 @@ export default defineConfig([
          "error" },
    files:
      [ "**/*.{js,mjs,cjs}",
-       "bin2txt",
-       `${_project}`,
-       `libbin2txt`,
-       `libtxt2bin`,
-       "txt2bin"
+       "cert-gen",
+       `libcert-gen`,
      ],
    plugins:
      { js },
@@ -76,12 +74,6 @@ export default defineConfig([
          "error" },
    files:
      [ "**/*.js",
-       `**/bin2txt`,
-       `**/${_project}`,
-       `**/lib${_project}`,
-       `**/libbin2txt`,
-       `**/libtxt2bin`,
-       `**/txt2bin`
      ],
    languageOptions:
      { sourceType:

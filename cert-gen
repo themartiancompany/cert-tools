@@ -23,20 +23,32 @@
 
 const
   _libcrash =
-    require(
+    await import(
       'crash-js');
-_cmdline_check =
-  _libcrash._cmdline_check;
-_msg_info =
-  _libcrash._msg_info;
-_msg_error =
-  _libcrash._msg_error;
+/* global
+     _cmdline_check */
+const
+  _cmdline_check =
+    _libcrash._cmdline_check;
+/* global
+     _msg_info */
+const
+  _msg_info =
+    _libcrash._msg_info;
+/* global
+     _msg_error */
+const
+  _msg_error =
+    _libcrash._msg_error;
 const
   _libcert_gen_module =
-    require(
+    await import(
       "./libcert-gen");
-_cert_gen =
-  _libcert_gen_module._cert_gen;
+/* global
+     _cert_gen */
+const
+  _cert_gen =
+    _libcert_gen_module._cert_gen;
 
 function
   _global_variables() {

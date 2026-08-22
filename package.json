@@ -2,7 +2,7 @@
   "name":
     "cert-tools",
   "version":
-    "0.0.12",
+    "0.0.13",
   "description":
     "OpenSSL certificates' tools written using the Forge TLS Javascript implementation",
   "funding": {
@@ -22,7 +22,6 @@
     "package.json",
     "cert-gen",
     "fs-worker.webpack.config.cjs",
-    "index.html",
     "libcert-gen",
     "libcert-gen.webpack.config.cjs",
     "man",
@@ -59,7 +58,7 @@
   },
   "devDependencies": {
     "crash-js-webpack":
-      "^0.0.31",
+      "^0.0.48",
     "eslint":
       "^10.3.0",
     "@eslint/js":
@@ -67,20 +66,20 @@
     "globals":
       "^17.3.0",
     "safely-serve":
-      "^0.0.11",
+      "^0.0.9",
     "webpack":
       "^5.102.1",
     "webpack-cli":
-      "^6.0.1"
+      "^7.2.2"
   },
   "dependencies": {
     "crash-js":
-      "^0.1.11",
+      "^0.1111111111.1111111111111111",
     "node-forge":
       "^1.4.0"
   },
   "type":
-    "commonjs",
+    "module",
   "main":
     "libcert-gen",
   "bin":
