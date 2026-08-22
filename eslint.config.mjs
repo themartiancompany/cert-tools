@@ -33,7 +33,9 @@ const
     "dist/**",
     "fs-worker.js",
     `cert-gen.js`,
+    `**/*.cert-gen.js`,
     `libcert-gen.js`,
+    `**/*.libcert-gen.js`,
     "node_modules/**",
     "eslint.config.js",
     "man/**"

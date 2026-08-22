@@ -27,7 +27,7 @@
 const
   _libcrash_module =
     await import(
-      'crash-js');
+      "libcrash-js");
 const
   _libcrash =
     _libcrash_module.default;
