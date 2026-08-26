@@ -43,12 +43,9 @@
        writable */
 
 const
-  _libcrash_module =
+  _libcrash =
     await import(
       "libcrash-js");
-const
-  _libcrash =
-    _libcrash_module.default;
 /* global
      _argv_url_get */
 const
@@ -124,7 +121,7 @@ function
     "cert-gen");
   _set(
     "app",
-    "name",
+    "opts",
     []);
   /* global
        key_private:
@@ -390,11 +387,11 @@ function
   }
 }
 
-function 
+async function 
   _cmdline_parse() {
   const
     _argv =
-      _yargv_get();
+      await _yargv_get();
   quiet = 
     "y";
   runtime_environment =
@@ -517,13 +514,19 @@ function
       _argv[
         "serial-number"];
   }
-  verbose =
+  const
+    _global =
+      _global_get();
+  _global[
+    "verbose"] =
     _argv[
       "verbose"] ||
     _argv[
       "v"];
-  if ( verbose ) {
-    quiet =
+  if ( _global[
+         "verbose"] ) {
+    _global[
+      "quiet"] =
       "n";
   }
 }
@@ -586,29 +589,30 @@ function
 }
 
 _global_variables();
-if ( _cmdline_check(
+if ( await _cmdline_check(
        "cert-gen") == true ) {
-  _cmdline_parse();
+  await _cmdline_parse();
 }
 else {
   _url_parse();
 }
 _overrides_set();
 _config_show();
-app_opts = [
-  key_private,
-  keys_length,
-  serial_number,
-  validity_min,
-  validity_max,
-  domain_name,
-  country_name,
-  state_name,
-  locality_name,
-  organization_name,
-  organization_unit,
-  output_file,
-];
+const
+  app_opts = [
+    key_private,
+    keys_length,
+    serial_number,
+    validity_min,
+    validity_max,
+    domain_name,
+    country_name,
+    state_name,
+    locality_name,
+    organization_name,
+    organization_unit,
+    output_file,
+  ];
 _cert_gen.apply(
   null,
   app_opts);

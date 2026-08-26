@@ -25,12 +25,9 @@
      no-unused-vars */
 
 const
-  _libcrash_module =
+  _libcrash =
     await import(
       "libcrash-js");
-const
-  _libcrash =
-    _libcrash_module.default;
 /* global
      _file_exists */
 const

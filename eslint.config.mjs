@@ -32,6 +32,7 @@ const
     "build/**",
     "dist/**",
     "fs-worker.js",
+    "**/*.fs-worker.js",
     `cert-gen.js`,
     `**/*.cert-gen.js`,
     `libcert-gen.js`,
