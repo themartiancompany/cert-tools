@@ -65,6 +65,8 @@
       "^10.9.0",
     "@eslint/js":
       "^10.0.1",
+    "fast-uri":
+      "^4.2.3",
     "globals":
       "^17.3.0",
     "minimatch":
